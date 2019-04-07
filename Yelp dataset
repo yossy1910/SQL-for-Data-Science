@@ -271,11 +271,28 @@ WHERE text LIKE '%hate%';
 	
 10. Find the top 10 users with the most fans:
 
-	SQL code used to arrive at answer:
-	
-	
-	Copy and Paste the Result Below:
+SQL code used to arrive at answer:
+---------------------------------
+SELECT id,name,fans
+FROM user
+ORDER BY fans DESC LIMIT 10;
 
+	
+Copy and Paste the Result Below:
++------------------------+-----------+------+
+| id                     | name      | fans |
++------------------------+-----------+------+
+| -9I98YbNQnLdAmcYfb324Q | Amy       |  503 |
+| -8EnCioUmDygAbsYZmTeRQ | Mimi      |  497 |
+| --2vR0DIsmQ6WfcSzKWigw | Harald    |  311 |
+| -G7Zkl1wIWBBmD0KRy_sCw | Gerald    |  253 |
+| -0IiMAZI2SsQ7VmyzJjokQ | Christine |  173 |
+| -g3XIcCb2b-BD0QBCcq2Sw | Lisa      |  159 |
+| -9bbDysuiWeo2VShFJJtcw | Cat       |  133 |
+| -FZBTkAZEXoP7CYvRV2ZwQ | William   |  126 |
+| -9da1xk7zgnnfO1uTVYGkA | Fran      |  124 |
+| -lh59ko3dxChBSZ9U7LfUw | Lissa     |  120 |
++------------------------+-----------+------+
 	
 	
 11. Is there a strong relationship (or correlation) between having a high number of fans and being listed as "useful" or "funny?" Out of the top 10 users with the highest number of fans, what percent are also listed as “useful” or “funny”?
@@ -285,14 +302,52 @@ Key:
 26% - 75% - Medium relationship
 76% - 100% - Strong relationship
 	
-	SQL code used to arrive at answer:
+SQL code used to arrive at answer:
+--------------------------------------
+SELECT name,fans,useful,funny,review_count,yelping_since
+FROM user
+ORDER BY fans DESC		
+--------------------------------------
 	
-	
-	Copy and Paste the Result Below:
-	
-	
-	Please explain your findings and interpretation of the results:
-	
+Copy and Paste the Result Below:
++-----------+------+--------+--------+--------------+---------------------+
+| name      | fans | useful |  funny | review_count | yelping_since       |
++-----------+------+--------+--------+--------------+---------------------+
+| Amy       |  503 |   3226 |   2554 |          609 | 2007-07-19 00:00:00 |
+| Mimi      |  497 |    257 |    138 |          968 | 2011-03-30 00:00:00 |
+| Harald    |  311 | 122921 | 122419 |         1153 | 2012-11-27 00:00:00 |
+| Gerald    |  253 |  17524 |   2324 |         2000 | 2012-12-16 00:00:00 |
+| Christine |  173 |   4834 |   6646 |          930 | 2009-07-08 00:00:00 |
+| Lisa      |  159 |     48 |     13 |          813 | 2009-10-05 00:00:00 |
+| Cat       |  133 |   1062 |    672 |          377 | 2009-02-05 00:00:00 |
+| William   |  126 |   9363 |   9361 |         1215 | 2015-02-19 00:00:00 |
+| Fran      |  124 |   9851 |   7606 |          862 | 2012-04-05 00:00:00 |
+| Lissa     |  120 |    455 |    150 |          834 | 2007-08-14 00:00:00 |
+| Mark      |  115 |   4008 |    570 |          861 | 2009-05-31 00:00:00 |
+| Tiffany   |  111 |   1366 |    984 |          408 | 2008-10-28 00:00:00 |
+| bernice   |  105 |    120 |    112 |          255 | 2007-08-29 00:00:00 |
+| Roanna    |  104 |   2995 |   1188 |         1039 | 2006-03-28 00:00:00 |
+| Angela    |  101 |    158 |    164 |          694 | 2010-10-01 00:00:00 |
+| .Hon      |  101 |   7850 |   5851 |         1246 | 2006-07-19 00:00:00 |
+| Ben       |   96 |   1180 |   1155 |          307 | 2007-03-10 00:00:00 |
+| Linda     |   89 |   3177 |   2736 |          584 | 2005-08-07 00:00:00 |
+| Christina |   85 |    158 |     34 |          842 | 2012-10-08 00:00:00 |
+| Jessica   |   84 |   2161 |   2091 |          220 | 2009-01-12 00:00:00 |
+| Greg      |   81 |    820 |    753 |          408 | 2008-02-16 00:00:00 |
+| Nieves    |   80 |   1091 |    774 |          178 | 2013-07-08 00:00:00 |
+| Sui       |   78 |      9 |     18 |          754 | 2009-09-07 00:00:00 |
+| Yuri      |   76 |   1166 |    220 |         1339 | 2008-01-03 00:00:00 |
+| Nicole    |   73 |     13 |     10 |          161 | 2009-04-30 00:00:00 |
++-----------+------+--------+--------+--------------+---------------------+
+(Output limit exceeded, 25 of 10000 total rows shown)
+
+
+
+Please explain your findings and interpretation of the results:
+------------------------------------------------------------------------
+Yes, but there does seem to be one major outlier, number three Harald. 
+The other users seem to have a correlation with more `useful` and `funny`
+results in more fans, but also in conjunction with review_count and time they have been yelping.
 	
 	
 
